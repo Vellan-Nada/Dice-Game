@@ -1,0 +1,203 @@
+/* Global reset & font smoothing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(135deg, #f9f9f9, #f0f0f3);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Title styling */
+.slackey {
+  font-family: "Slackey", sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin-top: 10px;
+  font-size: clamp(36px, 6vw, 72px);
+  background: linear-gradient(90deg, #ff6a00, #ff007f);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+}
+
+/* Main grid layout */
+.main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+  width: 90%;
+  max-width: 900px;
+  justify-items: center;
+}
+
+/* Player sections */
+.player1,
+.player2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 45px;
+  padding: 0 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: clamp(14px, 2vw, 18px);
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.input:focus {
+  border-color: #ff6a00;
+}
+
+/* Add player button */
+.button {
+  background: #ff6a00;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover {
+  background: #ff007f;
+}
+
+.button img {
+  width: clamp(18px, 2.5vw, 24px);
+  height: clamp(18px, 2.5vw, 24px);
+}
+
+/* Dice styling */
+.dice1,
+.dice2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img1,
+.img2 {
+  width: clamp(80px, 15vw, 140px);
+  height: clamp(80px, 15vw, 140px);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  background: white;
+  padding: 10px;
+}
+
+/* Start game button */
+.start {
+  margin-top: 50px;
+}
+
+.playB {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #ff6a00, #ff007f);
+  border: none;
+  padding: clamp(10px, 2vw, 14px) clamp(16px, 3vw, 28px);
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-size: clamp(16px, 2.2vw, 22px);
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.playB:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.playB img.play {
+  width: clamp(18px, 2.5vw, 26px);
+  height: clamp(18px, 2.5vw, 26px);
+  margin-right: 10px;
+}
+
+/* Big player name text after adding */
+.big {
+  font-size: clamp(18px, 3vw, 28px);
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main {
+    width: 100%;
+    gap: 25px;
+  }
+
+  .player1,
+  .player2 {
+    flex-direction: column;
+  }
+
+  .input {
+    width: 90%;
+  }
+
+  .dice1,
+  .dice2 {
+    margin-top: 10px;
+  }
+
+  .start {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+
+  .img1,
+  .img2 {
+    width: 70px;
+    height: 70px;
+  }
+
+  .playB {
+    width: 90%;
+  }
+}
+
+/* Dice shake animation */
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg) translate(0, 0); }
+  25% { transform: rotate(5deg) translate(3px, -3px); }
+  50% { transform: rotate(-5deg) translate(-3px, 3px); }
+  75% { transform: rotate(4deg) translate(2px, -2px); }
+}
+
+.shake {
+  animation: shake 0.1s linear infinite;
+}
